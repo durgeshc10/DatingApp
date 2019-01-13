@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from '../_models/message';
-import { Pagination, PaginatedResult } from '../_models/pagination';
-import { UserService } from '../_services/user.service';
-import { AuthService } from '../_services/auth.service';
 import { ActivatedRoute } from '@angular/router';
+import { Message } from '../_models/message';
+import { PaginatedResult, Pagination } from '../_models/pagination';
 import { AlertifyService } from '../_services/alertify.service';
+import { AuthService } from '../_services/auth.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-messages',
@@ -28,7 +28,7 @@ export class MessagesComponent implements OnInit {
     });
   }
 
-  loadMessage() {
+  loadMessages() {
     this.userService.getMessages(this.authService.decodedToken.nameid, this.pagination.currentPage,
       this.pagination.itemsPerPage, this.messageContainer)
       .subscribe((res: PaginatedResult<Message[]>) => {
@@ -41,7 +41,7 @@ export class MessagesComponent implements OnInit {
 
   pageChanged(event: any): void {
     this.pagination.currentPage = event.page;
-    this.loadMessage();
+    this.loadMessages();
   }
 
 }
