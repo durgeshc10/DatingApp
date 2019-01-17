@@ -44,7 +44,7 @@ namespace DatinApp.API.Migrations
 
                     b.Property<int>("RecipientId");
 
-                    b.Property<bool>("ReipientDeleted");
+                    b.Property<bool>("RecipientDeleted");
 
                     b.Property<bool>("SenderDeleted");
 
